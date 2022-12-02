@@ -6,7 +6,10 @@ elf_loser = { A: :B, B: :C, C: :A }
 choice_score = { A: 1, B: 2, C: 3 }
 outcome_score = { win: 6, draw: 3, loss: 0 }
 
-games = File.read("input.txt").split("\n").map{ |game| game.split.map(&:to_sym) }.map { |game| [game[0], conversion[game[1]]]}
+games = File.read("input.txt")
+            .split("\n")
+            .map { |game| game.split.map(&:to_sym) }
+            .map { |elf_choice, player_choice| [elf_choice, conversion[player_choice]]}
 
 games.map! do |elf_choice, player_choice|
   outcome = if elf_choice == player_choice
