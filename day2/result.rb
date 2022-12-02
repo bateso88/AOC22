@@ -8,15 +8,15 @@ outcome_score = { win: 6, draw: 3, loss: 0 }
 
 games = File.read("input.txt").split("\n").map{ |game| game.split.map(&:to_sym) }.map { |game| [game[0], conversion[game[1]]]}
 
-games.map! do |game|
-  outcome = if game[0] == game[1]
+games.map! do |elf_choice, player_choice|
+  outcome = if elf_choice == player_choice
     :draw
-  elsif elf_loser[game[0]] == game[1]
+  elsif elf_loser[elf_choice] == player_choice
     :win
   else
     :loss
   end
-  outcome_score[outcome] + choice_score[game[1]]
+  outcome_score[outcome] + choice_score[player_choice]
 end
 
 p games.sum
