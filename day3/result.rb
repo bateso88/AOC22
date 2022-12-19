@@ -8,3 +8,7 @@ lower_case_letters = incorrect_items.select {|item| item.upcase != item}
 result = capital_letters.map { |char| char.ord - 38 }.sum + lower_case_letters.map { |char| char.ord - 96 }.sum
 
 p result
+
+groups = File.read("input.txt").split.each_slice(3).to_a
+
+p groups
